@@ -1,0 +1,5 @@
+{
+  "name": "Mine for Profit - Industrial Mining Cluster",
+  "description": "Enterprise-grade Bitcoin mining simulation with Google authentication, industrial telemetry, and high-fidelity hardware boot sequences.",
+  "requestFramePermissions": []
+}

@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mine for Profit - Industrial Hardware Terminal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #020617;
+            color: #f8fafc;
+            overflow: hidden;
+        }
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .glass {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .sidebar-transition {
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hardware-grid {
+            background-image: radial-gradient(rgba(16, 185, 129, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* Maintenance Caution Pattern */
+        .caution-pattern {
+            background: repeating-linear-gradient(
+              45deg,
+              rgba(249, 115, 22, 0.05),
+              rgba(249, 115, 22, 0.05) 10px,
+              transparent 10px,
+              transparent 20px
+            );
+        }
+
+        /* Animations */
+        @keyframes fan-spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .animate-fan-spin {
+          animation: fan-spin 0.3s linear infinite;
+        }
+
+        @keyframes ticker {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-ticker {
+          display: inline-block;
+          animation: ticker 40s linear infinite;
+        }
+
+        @keyframes scanline {
+          0% { transform: translateY(-100%); }
+          100% { transform: translateY(100%); }
+        }
+        .scanline::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to bottom, transparent, rgba(16, 185, 129, 0.05) 50%, transparent);
+          animation: scanline 4s linear infinite;
+          pointer-events: none;
+        }
+
+        /* Scrollbar */
+        .custom-scroll::-webkit-scrollbar {
+          width: 5px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+          background: rgba(0,0,0,0.1);
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+          background: #1e293b;
+          border-radius: 10px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+          background: #334155;
+        }
+
+        /* Loading Rig Animation */
+        @keyframes pulse-glow {
+          0%, 100% { opacity: 0.3; transform: scale(1); }
+          50% { opacity: 1; transform: scale(1.05); }
+        }
+        .loading-glow {
+          animation: pulse-glow 2s ease-in-out infinite;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "recharts": "https://esm.sh/recharts@^3.6.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+  }
+}
+</script>
+</head>
+<body class="hardware-grid scanline">
+    <div id="root"></div>
+</body>
+</html>
